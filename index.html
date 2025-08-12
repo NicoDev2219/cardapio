@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Étoile — Cardápio Digital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">É</div>
+      <div>
+        <h1>Étoile</h1>
+        <p class="subtitle">Gastronomia • Vinhos • Experiência</p>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <input id="search" placeholder="Buscar prato, bebida..." aria-label="buscar" />
+      <div class="filters" id="filters">
+        <button class="filter active" data-cat="all">Todos</button>
+        <button class="filter" data-cat="entradas">Entradas</button>
+        <button class="filter" data-cat="principais">Pratos</button>
+        <button class="filter" data-cat="vinhos">Vinhos</button>
+        <button class="filter" data-cat="whiskies">Whiskies</button>
+        <button class="filter" data-cat="bebidas">Bebidas</button>
+        <button class="filter" data-cat="sobremesas">Sobremesas</button>
+      </div>
+      <button id="cart-toggle" aria-label="Abrir carrinho">🛒 <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="hero">
+      <h2 class="hero-title">Menu Signature</h2>
+      <p class="hero-sub">Selecione pratos e bebidas de alto padrão. Carrinho simulado com persistência local.</p>
+      <div class="legend">
+        <span class="chip gold">Luxo</span>
+        <span class="chip">Reserva</span>
+      </div>
+    </aside>
+
+    <section id="produtos" class="grid"></section>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <aside id="cart" class="cart">
+    <header class="cart-head">
+      <h3>Seu Carrinho</h3>
+      <button id="close-cart" aria-label="Fechar carrinho">✕</button>
+    </header>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="totals">
+        <div>Total itens: <strong id="cart-total-items">0</strong></div>
+        <div class="big">Total a pagar: <strong id="cart-total">R$ 0,00</strong></div>
+      </div>
+      <div class="cart-actions">
+        <button id="clear-cart" class="btn outline">Limpar</button>
+        <button id="checkout-btn" class="btn primary">Finalizar Pedido</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Detail Modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close">✕</button>
+      <img id="modal-img" src="" alt="">
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div class="modal-meta">
+          <div id="modal-price" class="price"></div>
+        </div>
+        <div class="modal-actions">
+          <label>Quantidade
+            <input id="modal-qty" type="number" min="1" value="1">
+          </label>
+          <button id="modal-add" class="btn primary">Adicionar ao carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card narrow">
+      <button id="checkout-close" class="modal-close">✕</button>
+      <h3>Finalizar Pedido</h3>
+      <form id="checkout-form" class="form">
+        <label>Nome<span class="muted"> (apenas simulação)</span>
+          <input id="cust-name" required placeholder="Nome do cliente">
+        </label>
+        <label>Mesa / Observação
+          <input id="cust-note" placeholder="Mesa 5, sem cebola...">
+        </label>
+
+        <div class="checkout-summary">
+          <div>Itens: <strong id="summary-items">0</strong></div>
+          <div>Total: <strong id="summary-total">R$ 0,00</strong></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="checkout-cancel" class="btn outline">Cancelar</button>
+          <button type="submit" class="btn primary">Confirmar pedido</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <footer class="footer">
+    <div>Desenvolvido por <strong>Nicolas Furtado</strong></div>
+    <div class="muted">Projeto de demonstração — front-end simulado</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
